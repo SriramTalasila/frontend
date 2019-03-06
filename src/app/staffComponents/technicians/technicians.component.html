@@ -1,0 +1,36 @@
+<div class="table-responsive container " >
+<table class="table" style="background-color: white ;margin-top:5%">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tech of technicians; let i= index ">
+      <th scope="row">{{ i+1 }}</th>
+      <td>{{tech.name}}</td>
+      <td>{{tech.phone}}</td>
+      <td><button class="btn btn-outline-delete" (click)="open(content, tech._id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Delete technician</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete technician</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" autofocus class="btn btn-danger" (click)="deleteTech()">Delete</button>
+  </div>
+</ng-template>

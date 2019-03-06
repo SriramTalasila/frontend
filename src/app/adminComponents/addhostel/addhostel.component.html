@@ -1,0 +1,32 @@
+<div class="card container" style="width:40%;margin-top:5%">
+  <form style="padding: 2%">
+    <div class="form-group">
+      <h3 style="text-align: center">Add New Hostel </h3>
+    </div>
+      <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="form-group">
+      <label for="hstlname">Hostel Name:</label>
+      <input aria-describedby="emailHelp" class="form-control" id="hstlname" [(ngModel)]="hostl.hname" name="hname" placeholder="Hostel Name" required
+             type="text" width="30">
+    </div>
+
+    <div class="form-group">
+      <label for="loc">Hostel location:</label>
+      <input class="form-control" id="loc" [(ngModel)]="hostl.location" name="location" placeholder="location" type="text">
+    </div>
+    <div class="form-group">
+      <label for="sel1">Select Hostel type:</label>
+      <select [(ngModel)]="hostl.hstltype" name="hstltype" class="form-control" id="sel1">
+        <option value="Boys">Boys</option>
+        <option value="girls">Girls</option>
+      </select>
+    </div>
+    <button (click)="addHostel()" class="btn btn-secondary" type="submit">Add Hostel</button>
+  </form>
+
+</div>

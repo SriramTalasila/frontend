@@ -1,0 +1,54 @@
+<div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+<div class="card container" style="margin-top: 4%">
+  <h3 style="padding: 1%">Your Complaints</h3>
+  <table  class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Status</th>
+      <th scope="col">Technician</th>
+      <th scope="col">Staff Feeback</th>
+      <th scope="col">Your FeedBack</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let com of complaints.complaints">
+        <td>{{com.title}}</td>
+        <td>{{com.description }}</td>
+        <td>{{com.ondate.split("T")[0]}}</td>
+        <td>{{com.status}}</td>
+        <td *ngIf="com.technician && complaints.techs[com.technician]">{{complaints.techs[com.technician].name}} {{complaints.techs[com.technician].phone}}</td>
+        <td *ngIf="com.technician && !complaints.techs[com.technician]">Deleted or not found</td>
+        <td *ngIf="!com.technician">Not Assigned</td>
+        <td >{{com.feedback}}</td>
+        <td >{{com.stufeedback}}</td>
+        <td ><button class="btn btn-danger"  (click)="open(content,com._id)" [disabled]="com.isClosed">Cancel</button></td>
+        <td ><button [disabled]="com.stufeedback" (click)="feedback(com._id)"class="btn btn-default">Feedback</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Cancel Complaint</h4>
+    <button type="button" class="close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p><strong>Are you sure you want to cancel <span class="text-primary">Complaint</span> </strong></p>
+    <span class="text-danger">This operation can not be undone.</span>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="close()">Ok</button>
+  </div>
+</ng-template>

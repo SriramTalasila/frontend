@@ -1,0 +1,22 @@
+<div class="card container" style="width:40%;margin-top:5%">
+  <form style="padding: 2%">
+    <div class="form-group">
+      <h3 style="text-align: center">Add College </h3>
+    </div>
+
+      <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="form-group">
+      <label for="clgname">College Name:</label>
+      <input aria-describedby="emailHelp" class="form-control" [(ngModel)]="college.cname" name="cname" id="clgname" placeholder="College Name" required
+             type="text" width="30">
+    </div>
+
+    <button class="btn btn-secondary float-right" (click)="addCollege()" type="submit">Add college</button>
+  </form>
+
+</div>

@@ -1,0 +1,38 @@
+<div class="card container" style="width:40%;margin-top:5%">
+  <form style="padding: 2%">
+    <div class="form-group">
+      <h3 style="text-align: center">Raise a Complaint </h3>
+    </div>
+
+      <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="form-group">
+      <label for="category">Select Problem Category:</label>
+      <select [(ngModel)]="complaint.section" name="section" class="form-control" id="category">
+        <option *ngFor="let ct of cate" [value]="ct._id">{{ct.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="tle">Title:</label>
+      <input [(ngModel)]="complaint.title" name="title" aria-describedby="emailHelp" class="form-control" id="tle" placeholder="Problem Title" required
+          aria-required="true"   type="text" width="30">
+
+    </div>
+    <div class="form-group">
+      <label for="desc">Description:</label>
+      <textarea [(ngModel)]="complaint.description" name="description" class="form-control" id="desc" placeholder="Problem description" ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="loc">Location:</label>
+      <input [(ngModel)]="complaint.location" name="location" class="form-control" id="loc" placeholder="Room No/Floor Number" type="text">
+      <small id="locationhelp" class="form-text text-muted">Eg: Room No 103 / Floor No 1</small>
+
+    </div>
+    <button (click)="makeComplaint()" class="btn btn-secondary" type="submit">Submit</button>
+  </form>
+
+</div>

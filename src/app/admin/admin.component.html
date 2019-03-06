@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" >Hostel Maintenance<small style="color:lightgray"> | Admin</small></a>
+  <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNav"
+          data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/complaints" routerLinkActive="Active">Complaints</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/addcategory" routerLinkActive="Active">Add Category</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin/warden" routerLinkActive="Active">Warden</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           id="navbarDropdown2" role="button">
+          Hostels
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/admin/addhostel">Add Hostels</a>
+          <a class="dropdown-item" routerLink="#">Manage Hostels</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           id="navbarDropdown1" role="button">
+          Staff
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/admin/addstaff">Add Staff</a>
+          <a class="dropdown-item" routerLink="#">Manage Staff</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+           id="navbarDropdown" role="button">
+          Colleges
+        </a>
+        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+          <a class="dropdown-item" routerLink="/admin/addcollege">Add College</a>
+          <a class="dropdown-item" routerLink="#">Manage Colleges</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <button (click)="LogoutUser()" class="nav-link btn"><i aria-hidden="true" class="fa fa-sign-out"></i>logout</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

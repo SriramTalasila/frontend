@@ -1,0 +1,27 @@
+<div class="card container" style="width:40%;margin-top:5%">
+  <form style="padding: 2%">
+    <div class="form-group">
+      <h3 style="text-align: center">Add Technician </h3>
+    </div>
+    <div *ngIf="succMssg" class="alert alert-success">
+        {{succMssg}}
+      </div>
+      <div *ngIf="errMssg" class="alert alert-danger">
+       {{errMssg}}
+      </div>
+    <div class="form-group">
+      <label for="tname">Name:</label>
+      <input aria-describedby="emailHelp" class="form-control" [(ngModel)]="technician.name" name = "name" id="tname" placeholder="Technician Name" required
+             type="text" width="30">
+    </div>
+    <div class="form-group">
+      <label for="ph">Phone:</label>
+      <input aria-describedby="emailHelp" class="form-control" [(ngModel)]="technician.phone" name = "ph" id="ph" placeholder="phone" required
+             type="number" width="30">
+      <small id="emailHelp" class="form-text text-muted">Warning: Add 91 at beging ex:919848012345</small>
+    </div>
+
+    <button (click)="addTech()" class="btn btn-secondary float-right" type="submit">Add Technician</button>
+  </form>
+
+</div>

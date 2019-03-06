@@ -1,0 +1,99 @@
+<div class="table-responsive container"  style="margin-top: 5%">
+  <table class="table " style="background-color: white;">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Hostel</th>
+      <th scope="col">Room/Floor</th>
+      <th scope="col">Technician</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let com of complaints.complaints">
+      <td>{{com.title}}</td>
+      <td>{{com.description}}</td>
+      <td>{{complaints.hstls[com.hostel]}}</td>
+      <td>{{com.location}}</td>
+      <td *ngIf="com.technician && complaints.techs[com.technician]">{{complaints.techs[com.technician].name}}
+        <br>{{complaints.techs[com.technician].phone}} </td>
+      <td *ngIf="!com.technician ">Not Assigned</td>
+      <td *ngIf="!complaints.techs[com.technician]">Technician Deleted/Not found</td>
+      <td>{{com.status}}</td>
+      <td>
+        <button (click)="open(assign,com._id)" [disabled]="com.technician" class="btn btn-outline-primary">Assign
+          Technician
+        </button>
+      </td>
+      <td>
+        <button (click)="open(closeM, com._id)" [disabled]="com.isClosed" class="btn btn-outline-success">Close
+          Request
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<ng-template #closeM let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Do you wish to close the request</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div *ngIf="succMssg" class="alert alert-success">
+        {{succMssg}}
+      </div>
+      <div *ngIf="errMssg" class="alert alert-danger">
+       {{errMssg}}
+      </div>
+
+      <div class="form-group">
+        <label for="feed">Add a feedback </label>
+        <textarea [(ngModel)]="feedback" class="form-control" name="feed" id ="feed" ></textarea>
+        <small>Not neccesary</small>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Cancel</button>
+    <button type="button" class="btn btn-outline-success" (click)="closeRequest()">Close Request</button>
+  </div>
+</ng-template>
+
+<ng-template #assign let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Assign Technician</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div *ngIf="succMssg" class="alert alert-success">
+        {{succMssg}}
+      </div>
+      <div *ngIf="errMssg" class="alert alert-danger">
+       {{errMssg}}
+      </div>
+      <h5>Select a technician</h5>
+      <div class="form-group">
+        <label for="techselect"> select</label>
+        <select [(ngModel)]="technician" name="technician" ngbAutofocus class="form-control" id="techselect">
+          <option *ngFor="let t of techs" [value]="t._id">{{t.name}}</option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="assTech()">Assign</button>
+  </div>
+</ng-template>

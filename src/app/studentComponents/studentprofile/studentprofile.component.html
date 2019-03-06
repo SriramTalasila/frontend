@@ -1,0 +1,21 @@
+<div class="container card" style="margin-top:5%">
+  <h5 class="card-title" style="padding: 2%">Student Profile</h5>
+  <hr>
+  <div class="row" style="padding: 2%">
+
+  <div class="col-4 "><img *ngIf="student.rollno" class="rounded"
+                                [src]="'http://localhost:3000/static/images/' + student.rollno + '.jpg'"
+                                width="50%" height="auto"
+                                >.</div>
+  <div class="col-8">
+    <p><strong>Name : </strong>{{student.fullname}}</p>
+    <p><strong>Roll Number : </strong>{{student.rollno}}</p>
+    <p><strong>Phone : </strong>{{student.phone}}</p>
+    <p><strong>Email : </strong>{{student.rollno}}@vishnu.edu.in</p>
+    <p><strong>Hostel : </strong>{{hstl.name}} </p>
+    <p><strong>college : </strong>{{clg.name}}</p>
+  </div>
+    <hr>
+
+</div>
+</div>

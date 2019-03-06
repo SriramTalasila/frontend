@@ -1,0 +1,57 @@
+<div class="card container" style="width:40%;margin-top:3%">
+  <form style="padding: 2%">
+    <h3 style="text-align: center;padding: 1%">Registration for Students</h3>
+    <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="form-group ">
+      <label for="fullName">Full Name</label>
+      <input [(ngModel)]="student.fname" aria-describedby="emailHelp" class="form-control" id="fullName" name="fname"
+             placeholder="Full Name" required type="text">
+    </div>
+    <div class="form-group">
+      <label for="InputEmail1">Email address</label>
+      <input [(ngModel)]="student.email" aria-describedby="emailHelp" class="form-control" id="InputEmail1" name="email"
+             placeholder="Enter email" required type="email">
+      <small class="form-text text-muted" id="emailHelp">Note: Your email must be your college mail Ex: @vishnu.edu.in
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="reg">Register No</label>
+      <input [(ngModel)]="student.regno" class="form-control" id="reg" name="regno" placeholder="registration Number"
+             type="text">
+    </div>
+     <div class="form-group">
+      <label for="reg">Phone </label>
+      <input [(ngModel)]="student.phone" class="form-control" id="ph" name="phone" placeholder="Phone Number include 91"
+             type="text">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input [(ngModel)]="student.password" class="form-control" id="exampleInputPassword1" name="password"
+             placeholder="Password" type="password">
+    </div>
+    <div class="form-group">
+      <label for="college">College</label>
+      <select [(ngModel)]="student.cid" class="form-control" id="college" name="cid">
+        <option *ngFor="let obj of colleges" [value]="obj._id">
+          {{obj.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="hstl">Hostel</label>
+      <select [(ngModel)]="student.hid" class="form-control" id="hstl" name="hid">
+        <option *ngFor="let obj of hostels" [value]="obj._id">
+          {{obj.name}}</option>
+      </select>
+    </div>
+
+    <button (click)="registerStudent()" class="btn btn-primary float-right">
+      Register
+    </button>
+  </form>
+
+</div>

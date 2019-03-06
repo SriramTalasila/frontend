@@ -1,0 +1,64 @@
+<div class="card container" style="width:40%;margin-top:5%">
+
+  <form style="padding: 2%">
+
+    <div class="form-group">
+      <h3 style="text-align: center">Add New Staff Member </h3>
+    </div>
+      <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="usrname">Username:</label>
+          <input class="form-control" [(ngModel)]="staffmember.username" name="username" id="usrname" placeholder="Username" type="text">
+        </div>
+
+        <div class="form-group">
+          <label for="psswd">Password:</label>
+          <input class="form-control" [(ngModel)]="staffmember.password" name="password" id="psswd" placeholder="password" type="password">
+        </div>
+        <div class="form-group">
+          <label for="confpsswd">Confirm Password:</label>
+          <input class="form-control" id="confpsswd" [(ngModel)]="staffmember.cnfpassword" name="cnfpassword" placeholder="password" type="text">
+        </div>
+        <div class="form-group">
+          <label for="phone">phone:</label>
+          <div class="input-group mb-3">
+
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">+91</span>
+            </div>
+            <input class="form-control" id="phone" placeholder="phone" [(ngModel)]="staffmember.phone" name="phone"type="number">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="stemail">Staff Email:</label>
+          <input aria-describedby="emailHelp" class="form-control" [(ngModel)]="staffmember.email" id="stemail" name="email" placeholder="Staff Mail" required
+                 type="email" width="30">
+        </div>
+        <div class="form-group">
+          <label for="fname">Full Name:</label>
+          <input class="form-control" id="fname" name="fullname" placeholder="Full name" [(ngModel)]="staffmember.fname" type="text">
+        </div>
+
+        <div class="form-group">
+          <label for="sel1">Select category:</label>
+          <select [(ngModel)]="staffmember.section" name="section" class="form-control" id="sel1">
+             <option *ngFor="let obj of sections" [value]="obj._id">
+          {{obj.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button (click)="addStaff()" class="btn btn-secondary float-right" type="submit">Add Staff</button>
+
+  </form>
+
+</div>

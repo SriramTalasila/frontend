@@ -1,0 +1,21 @@
+<div class="card container" style="width:40%;margin-top:5%">
+  <form style="padding: 2%">
+    <div class="form-group">
+      <h3 style="text-align: center">Add New Category </h3>
+    </div>
+    <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="form-group">
+      <label for="catname">Category Name:</label>
+      <input [(ngModel)]="category.name" aria-describedby="emailHelp" class="form-control" id="catname" name="name"
+             placeholder="Category Name" required
+             type="text" width="30">
+    </div>
+    <button (click)="addCategeory()" class="btn btn-secondary float-right" type="submit">Add Category</button>
+  </form>
+
+</div>

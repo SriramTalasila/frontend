@@ -1,0 +1,23 @@
+<div class="card container" style="width:40%;margin-top:5%">
+  <form style="padding: 2%">
+    <div class="form-group">
+      <h3 style="text-align: center">Submit Your Feedback</h3>
+    </div>
+      <div *ngIf="succMssg" class="alert alert-success" role="alert">
+      {{succMssg}}
+    </div>
+    <div *ngIf="errMssg" class="alert alert-danger" role="alert">
+      {{errMssg}}
+    </div>
+    <div class="form-group">
+      <label for="feedback">Feedback:</label>
+      <textarea  class="form-control" id="feedback" [(ngModel)]="feedback.fdata" name="feedback" placeholder="Type here 10 words.." required
+             type="text" width="30"></textarea>
+    </div>
+
+
+
+    <button  class="btn btn-secondary" (click)="submitFeedback()" type="submit">Submit Feedback</button>
+  </form>
+
+</div>

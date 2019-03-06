@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" >Hostel Maintenance<small style="color:lightgray"> | Warden</small></a>
+  <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarNav"
+          data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav navbar-nav ml-auto">
+     <li class="nav-item">
+        <a routerLink="/staff/technicians" routerLinkActive="active" class="nav-link">Technicians</a>
+      </li>
+       <li class="nav-item">
+        <a routerLink="/staff/addtechnician" routerLinkActive="active" class="nav-link">Add Technician</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/staff/complaints" routerLinkActive="active" class="nav-link">complaints</a>
+      </li>
+      <li class="nav-item">
+        <button (click)="LogoutUser()" class="nav-link btn"><i aria-hidden="true" class="fa fa-sign-out"></i>logout</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
